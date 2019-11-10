@@ -56,3 +56,4 @@ for i in range(60):
             elapsed = int((time.time() - start)/60)
             print(60*i+j+1, 'out of', len(file_s1) * len(file_s2), 'done.', elapsed, 'min elasped.')
 
+np.save('rec_pair.npy', rec_pair)
