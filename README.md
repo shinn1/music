@@ -14,3 +14,8 @@
 - `analysis_MI_traits.r` runs GLM on mutual information
 - `analysis_TE_traits.r` runs GLM on transfer entropy
 
+## sample music
+- `sample/pair02session2.wav`: music with lowest symbolic recurrence rate (0.117) 
+- `sample/pair26session1.wav`: music with highest symbolic recurrence rate (0.321)
+- `sample/pair20session1.wav`: music with lowest mutual information (0.008) 
+- `sample/pair15session2.wav`: music with highest mutual information (0.637)
