@@ -21,6 +21,7 @@ for q in range(30):
     s2 = data.loc[(data['session']==2) & (data['pair']==q) & (data['player']==2)]['amplitude']
     file_s1.append(np.array(s1))
     file_s2.append(np.array(s2))
+    
 # empty array to store data
 ## session, values (jointSRR, MI, TE), player i, player j
 rec_pair = np.empty((2, 3, 60, 60))
