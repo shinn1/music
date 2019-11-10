@@ -16,10 +16,7 @@ obs_pair = np.concatenate((obs_pair1, obs_pair2), axis = 1)     # session, vals 
 
 
 
-#__________________________________________________
-#
 # compare an observed mean against shuffled means
-
 n_itr = 20000
 shuffle_pair = np.empty((2, 4, n_itr, 30))  # session, vals (jointSRR, MI, TE12, TE21), itr, pair
 k = np.repeat(range(30), 2)     # fake pair ID
@@ -32,46 +29,29 @@ for itr in range(n_itr):
         foo[:, 3, x] = rec_pair[:, 2, pair[1], pair[0]]
     shuffle_pair[:, :, itr, :] = foo
 
-np.save('obs_pair.npy', obs_pair)
-np.save('shuffle_pair.npy', shuffle_pair)
 
 
-
-#____________________________
 # p-value
-p_s1 = []; p_s2 = []
-## jointSRR (session 1)
-foo = np.mean(obs_pair[0, 0, :])                  # observed mean
-bar = np.mean(shuffle_pair[0, 0, :, :], axis = 1) # shuffled means
-right = np.sum(foo < bar)
-p_s1.append((right + 1) / (n_itr + 1))
-
-## jointSRR (session 2)
-foo = np.mean(obs_pair[1, 0, :])
-bar = np.mean(shuffle_pair[1, 0, :, :], axis = 1)
-right = np.sum(foo < bar)
-p_s2.append((right + 1) / (n_itr + 1))
-
 ## MI (session 1)
 foo = np.mean(obs_pair[0, 1, :])
 bar = np.mean(shuffle_pair[0, 1, :, :], axis = 1)
 right = np.sum(foo < bar)
-p_s1.append((right + 1) / (n_itr + 1))
+p = (right + 1) / (n_itr + 1)
 
 ## MI (session 2)
 foo = np.mean(obs_pair[1, 1, :])
 bar = np.mean(shuffle_pair[1, 1, :, :], axis = 1)
 right = np.sum(foo < bar)
-p_s2.append((right + 1) / (n_itr + 1))
+p = (right + 1) / (n_itr + 1)
 
 ## TE (session 1)
 foo = np.mean(obs_pair[0, 2:4, :])
 bar = np.mean(shuffle_pair[0, 2:4, :, :], axis = 2).flatten()
 right = np.sum(foo < bar)
-p_s1.append((right + 1) / (n_itr + 1))
+p = (right + 1) / (n_itr + 1)
 
 ## TE (session 2)
 foo = np.mean(obs_pair[1, 2:4, :])
 bar = np.mean(shuffle_pair[1, 2:4, :, :], axis = 2).flatten()
 right = np.sum(foo < bar)
-p_s2.append((right + 1) / (n_itr + 1))
+p = (right + 1) / (n_itr + 1)
