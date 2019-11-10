@@ -11,7 +11,7 @@ import itertools
 rec_together = np.load('rec_together.npy')
 
 # observed mean
-# SRR, v_max, v_bar, v_prop, d_max, d_bar, d_prop, H
+# SRR, d_max, d_bar, d_prop, v_max, v_bar, v_prop, H
 obs_together = np.diagonal(rec_together[:, :, :30, 30:], axis1 = 2, axis2 = 3)
 
 # shuffled means
