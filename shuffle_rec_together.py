@@ -8,9 +8,7 @@ from pathlib import Path
 import itertools
 
 # import data
-home = str(Path.home())
-os.chdir(home + '/Google Drive/music_project/data_processed/')
-rec_together = np.load('rec_together_m3.npy')
+rec_together = np.load('rec_together.npy')
 
 # observed mean
 # SRR, v_max, v_bar, v_prop, d_max, d_bar, d_prop, H
@@ -48,7 +46,3 @@ for i in range(8):
 p_vals['session1'] = p_val_s1
 p_vals['session2'] = p_val_s2
 p_vals.index = ['SRR', 'd_max', 'd_bar', 'd_prop', 'v_max', 'v_bar', 'v_prop', 'H']
-
-# save
-os.chdir(home + '/Google Drive/music_project/data_processed')
-p_vals.to_csv('p_vals_together.csv')
