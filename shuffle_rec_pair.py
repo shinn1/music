@@ -7,10 +7,7 @@ import time
 from pathlib import Path
 
 # import data
-home = str(Path.home())
-os.chdir(home + '/Google Drive/music_project/data_processed/')
-
-rec_pair = np.load('rec_pair_m3.npy')
+rec_pair = np.load('rec_pair.npy')
 
 obs_pair1 = np.diagonal(rec_pair[:, :, :30, 30:], axis1 = 2, axis2 = 3) # SRR, MI, TE12
 obs_pair2 = np.diagonal(rec_pair[:, 2, 30:, :30], axis1 = 1, axis2 = 2) # TE21
@@ -37,6 +34,8 @@ for itr in range(n_itr):
 
 np.save('obs_pair.npy', obs_pair)
 np.save('shuffle_pair.npy', shuffle_pair)
+
+
 
 #____________________________
 # p-value
@@ -76,11 +75,3 @@ foo = np.mean(obs_pair[1, 2:4, :])
 bar = np.mean(shuffle_pair[1, 2:4, :, :], axis = 2).flatten()
 right = np.sum(foo < bar)
 p_s2.append((right + 1) / (n_itr + 1))
-
-# save
-p_vals = pd.DataFrame()
-p_vals['session 1'] = p_s1
-p_vals['session 2'] = p_s2
-p_vals.index = ['jointSRR', 'MI', 'TE']
-os.chdir(home + '/Google Drive/music_project/data_processed')
-p_vals.to_csv('p_vals_pair.csv')
