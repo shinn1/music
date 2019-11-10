@@ -1,5 +1,5 @@
 ## Data
-- `amplitude.csv` contains sound amplitudes of music
+- `amplitude.csv` contains sound amplitudes of music at a 150-ms interval
 - `survey.csv` contains survey data
 
 ## Joint behavior
