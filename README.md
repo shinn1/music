@@ -1,6 +1,6 @@
 ## Data
-- `...` contains sound amplitudes of music
-- `...` contains survey data
+- `amplitude.csv` contains sound amplitudes of music
+- `survey.csv` contains survey data
 
 ## Joint behavior
 - `recurrence_together.py` computes recurrence metrics for music created by pairs
