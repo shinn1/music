@@ -13,7 +13,3 @@
 - `shuffle_rec_together.py` performs permutation test on the observed recurrence metrics
 - `recurrence_pair.py` computes mutual information and transfer entropy
 - `shuffle_rec_pair.py` performs permutation test on the observed mutual information and transfer entropy
-
-## Relationship with individual attributes
-- `analysis_MI_traits.r` runs GLM on mutual information
-- `analysis_TE_traits.r` runs GLM on transfer entropy
